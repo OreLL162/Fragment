@@ -108,7 +108,7 @@ public class FragmentOne extends Fragment {
                         public void onClick(View v) {
                             snackbar.dismiss();
                         }
-                    });
+                    } );
                     snackbar.show();                }
 
             }
