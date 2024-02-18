@@ -9,8 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import com.example.fragment.R;
-import com.example.fragment.activites.MyData;
-import com.example.fragment.activites.User;
+import com.example.fragment.Data.MyData;
 import com.google.android.material.snackbar.Snackbar;
 
 public class FragmentTwo extends Fragment {
@@ -52,18 +51,17 @@ public class FragmentTwo extends Fragment {
         EditText signupUsername = view.findViewById(R.id.regUsername);
         EditText signupPassword = view.findViewById(R.id.regPassword);
         EditText signupPhoneNumber = view.findViewById(R.id.regTelephone);
+        MyData myData = new MyData();
 
         button.setOnClickListener(v -> {
             String username = signupUsername.getText().toString();
             String password = signupPassword.getText().toString();
             String phoneNumber = signupPhoneNumber.getText().toString();
 
-            if (MyData.userDetails.containsKey(username)) {
-                Snackbar.make(v, "This Username is already taken", Snackbar.LENGTH_LONG)
-                        .setAction("Close", v1 -> {}).show();
+            if (!myData.addUser(username,password,phoneNumber)) {
+                    Snackbar.make(v, "This Username is already taken", Snackbar.LENGTH_LONG)
+                            .setAction("Close", v1 -> {}).show();
             } else {
-                User usr = new User(password, phoneNumber); // Ensure this matches your User constructor
-                MyData.userDetails.put(username, usr);
                 Bundle bundle = new Bundle();
                 bundle.putString("userName", username);
                 Navigation.findNavController(v).navigate(R.id.action_fragmentTwo_to_fragmentThree, bundle);

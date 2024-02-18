@@ -10,14 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.HashMap;
 import java.util.Objects;
 
 import com.example.fragment.R;
-import com.example.fragment.activites.MyData;
+import com.example.fragment.Data.MyData;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -93,8 +90,9 @@ public class FragmentOne extends Fragment {
             public void onClick(View v) {
                 String username = loginUsername.getText().toString();
                 String password = loginPassword.getText().toString();
+                MyData myData = new MyData();
 
-                if(MyData.userDetails.containsKey(username) && Objects.equals(MyData.userDetails.get(username), password))
+                if(myData.)
                 {
                     Bundle bundle = new Bundle();
                     bundle.putString("userName",username);
